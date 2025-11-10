@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "mottu-api-with-token",
+		"name": "Mottu-API-With-Token",
+		"description": "API Mottu com token JWT configurado",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "👥 1. GET Usuários (Com Token)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"✅ Status 200 - Acesso autorizado\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"✅ Lista de usuários retornada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(Array.isArray(jsonData)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/Usuarios",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "Usuarios"]
+				}
+			}
+		},
+		{
+			"name": "🏍️ 2. GET Motos (Com Token)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"✅ Status 200 - Acesso autorizado\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"✅ Lista de motos retornada\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(Array.isArray(jsonData)).to.be.true;",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/Motos",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "Motos"]
+				}
+			}
+		},
+		{
+			"name": "📍 3. GET Áreas (Com Token)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"✅ Status 200 - Acesso autorizado\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/Area",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "Area"]
+				}
+			}
+		},
+		{
+			"name": "🤖 4. POST ML Risco (Com Token)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"✅ Status 200 - Análise concluída\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authToken}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"motoId\": 1,\n  \"quilometragem\": 1500,\n  \"ultimaManutencao\": \"2024-01-15\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/v1/ml/risco-manutencao",
+					"host": ["{{baseUrl}}"],
+					"path": ["api", "v1", "ml", "risco-manutencao"]
+				}
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://appmottu-fzesdddnawczb5cn.brazilsouth-01.azurewebsites.net",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTc2Mjc0MzU4OX0.nY5DP1Tz3cZA96MzpYUrWK1f0KQW9UJMw8zvdewMMx4",
+			"type": "string"
+		}
+	]
+}
