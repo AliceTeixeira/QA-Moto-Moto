@@ -1,3 +1,5 @@
+Link do video: https://youtu.be/MxOnPGpXHGg
+
 # 🚀 Sistema de Compliance & Quality Assurance
 
 > **Gestão completa de Compliance, Qualidade e Testes Automatizados** - Projeto desenvolvido com metodologia Scrum em 6 sprints.
